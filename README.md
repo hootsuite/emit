@@ -5,7 +5,7 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Alamofire.svg)](https://img.shields.io/cocoapods/v/Alamofire.svg)
 
-Emit is a swift Framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.
+Emit is a Swift framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.
 
 Emit has been developed for use in the Hootsuite iOS app.
 
@@ -30,27 +30,26 @@ signal.subscribe(owner: self) { result in
 
 loginCompleteSignal.emit()
 ```
-To create a signal you need to specify the return type that will passed when the closure is emitted. In the case above we are declaring the type to be Bool. If there is no need for a param you can return Void in that case you can initialize it as Signal().
+To create a signal you need to specify the return type that will passed when the closure is emitted. In the case above we are declaring the type to be `Bool`. If there is no need for a value you can return Void in that case you can initialize it as `Signal<Void>()`.
 
-To subscribe to a Signal you need to pass the Signal's owner for memory managment purposes and the closure to be called when the Signal is emitted. You may also pass a DispatchQueue that you would like the closure to be called on, the default is DispatchQueue.main.
+To subscribe to a Signal you need to pass the Signal's owner for memory management purposes and the closure to be called when the Signal is emitted. You may also pass a `DispatchQueue` that you would like the closure to be called on, the default is `DispatchQueue.main`.
 
 ### ObservableVariable
 ```swift
 let email = ObservableVariable("")
 
-email.subscribe(owner: self) { newEmail in
+email.signal.subscribe(owner: self) { newEmail in
 /// Update UI with new email
 }
 
 email.value = "test_email@gmail.com" /// This will emit the signal to update the UI
 ```
 
-The usage for ObservableVariable is very similar to a Signal except instead of emitting the signal yourself the signal will be emitting when the value is set or changed on the ObservableVariable.
+The usage for `ObservableVariable` is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the `ObservableVariable`.
 
 ## Demo Projects
 
 See the demo project provided for example usage of the Emit framework.
-
 
 ## Installation
 
@@ -61,7 +60,7 @@ Emit can be installed using either [Carthage](https://github.com/Carthage/Cartha
 To integrate Emit into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-git "git@github.com:hootsuite/Emit.git"
+github "hootsuite/Emit"
 ```
 
 ### CocoaPods
