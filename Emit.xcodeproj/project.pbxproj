@@ -7,15 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		67513A78214C69D900AD65EA /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A72214C69D900AD65EA /* UnfairLock.swift */; };
-		67513A79214C69D900AD65EA /* ArrayChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A73214C69D900AD65EA /* ArrayChanges.swift */; };
-		67513A7A214C69D900AD65EA /* ArrayChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A74214C69D900AD65EA /* ArrayChange.swift */; };
 		67513A7B214C69D900AD65EA /* RWLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A75214C69D900AD65EA /* RWLock.swift */; };
 		67513A7C214C69D900AD65EA /* ObservableVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A76214C69D900AD65EA /* ObservableVariable.swift */; };
 		67513A7D214C69D900AD65EA /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513A77214C69D900AD65EA /* Signal.swift */; };
 		67513AA9214C6F3600AD65EA /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513AA6214C6F3600AD65EA /* SignalTests.swift */; };
 		67513AAA214C6F3600AD65EA /* ObservableVariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513AA7214C6F3600AD65EA /* ObservableVariableTests.swift */; };
-		67513AAB214C6F3600AD65EA /* ArrayChangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513AA8214C6F3600AD65EA /* ArrayChangesTests.swift */; };
 		67513AAE214C74BA00AD65EA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67513AAC214C737100AD65EA /* LoginViewModel.swift */; };
 		A8AC40921DA5D8CE00D644CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AC40841DA5D8C500D644CA /* LaunchScreen.storyboard */; };
 		A8AC40931DA5D8CE00D644CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AC40861DA5D8C500D644CA /* Main.storyboard */; };
@@ -60,15 +56,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		67513A72214C69D900AD65EA /* UnfairLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
-		67513A73214C69D900AD65EA /* ArrayChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChanges.swift; sourceTree = "<group>"; };
-		67513A74214C69D900AD65EA /* ArrayChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChange.swift; sourceTree = "<group>"; };
 		67513A75214C69D900AD65EA /* RWLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLock.swift; sourceTree = "<group>"; };
 		67513A76214C69D900AD65EA /* ObservableVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableVariable.swift; sourceTree = "<group>"; };
 		67513A77214C69D900AD65EA /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
 		67513AA6214C6F3600AD65EA /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalTests.swift; sourceTree = "<group>"; };
 		67513AA7214C6F3600AD65EA /* ObservableVariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableVariableTests.swift; sourceTree = "<group>"; };
-		67513AA8214C6F3600AD65EA /* ArrayChangesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayChangesTests.swift; sourceTree = "<group>"; };
 		67513AAC214C737100AD65EA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A8AC40831DA5D8C500D644CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8AC40851DA5D8C500D644CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -175,12 +167,9 @@
 		A8C860CB1DA5B2B800F4B309 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				67513A74214C69D900AD65EA /* ArrayChange.swift */,
-				67513A73214C69D900AD65EA /* ArrayChanges.swift */,
 				67513A76214C69D900AD65EA /* ObservableVariable.swift */,
 				67513A75214C69D900AD65EA /* RWLock.swift */,
 				67513A77214C69D900AD65EA /* Signal.swift */,
-				67513A72214C69D900AD65EA /* UnfairLock.swift */,
 				A8C860CC1DA5B2B800F4B309 /* Emit.h */,
 			);
 			path = Sources;
@@ -189,7 +178,6 @@
 		A8C860D11DA5B2B800F4B309 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				67513AA8214C6F3600AD65EA /* ArrayChangesTests.swift */,
 				67513AA7214C6F3600AD65EA /* ObservableVariableTests.swift */,
 				67513AA6214C6F3600AD65EA /* SignalTests.swift */,
 				A8C860D21DA5B2B800F4B309 /* Info.plist */,
@@ -415,12 +403,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67513A78214C69D900AD65EA /* UnfairLock.swift in Sources */,
 				67513A7D214C69D900AD65EA /* Signal.swift in Sources */,
 				67513A7B214C69D900AD65EA /* RWLock.swift in Sources */,
-				67513A79214C69D900AD65EA /* ArrayChanges.swift in Sources */,
 				67513A7C214C69D900AD65EA /* ObservableVariable.swift in Sources */,
-				67513A7A214C69D900AD65EA /* ArrayChange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +415,6 @@
 			files = (
 				67513AAA214C6F3600AD65EA /* ObservableVariableTests.swift in Sources */,
 				67513AA9214C6F3600AD65EA /* SignalTests.swift in Sources */,
-				67513AAB214C6F3600AD65EA /* ArrayChangesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
