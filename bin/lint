@@ -8,20 +8,11 @@ unless system("which swiftlint > /dev/null 2>&1")
   exit 1
 end
 
-unless system("which aws > /dev/null 2>&1")
-  print "error: AWS CLI not installed, please run brew install awscli"
-  exit 1
-end
-
 MIN_VERSION = '0.22.0'.freeze
 version = `swiftlint version`.strip
 if Gem::Version.new(version) < Gem::Version.new(MIN_VERSION)
   print "error: please update to SwiftLint version #{MIN_VERSION} (currently on #{version})"
   exit 1
-end
-
-unless system("aws s3 cp s3://hootsuite-build-artifacts/deploy/mobile/.swiftlint.yml .")
-  print "warning: Failed to fetch SwiftLint configuration, please run `aws configure` and provide the credentials. Using default SwiftLint configuration."
 end
 
 if File.exist?('.swiftlint.yml')
