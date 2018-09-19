@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Emit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Emit  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Emit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/hootsuite/emit"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Emit Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Emit  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ObservableVariable.html">ObservableVariable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RWLock.html">RWLock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Signal.html">Signal</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='emit' class='heading'>Emit</h1>
+
+<p><a href="https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202-lightgrey.svg" alt="GitHub license"></a>
+<a href="https://github.com/Carthage/Carthage/releases"><img src="https://img.shields.io/github/release/carthage/carthage.svg" alt="GitHub release"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
+<a href="https://img.shields.io/cocoapods/v/Alamofire.svg"><img src="https://img.shields.io/cocoapods/v/Alamofire.svg" alt="Cocoapods Compatible"></a>
+<a href="https://github.hootops.com/pages/iOS/emit/"><img src="https://img.shields.io/badge/Documentation-GitHub%20Pages-green.svg" alt="Documentation"></a></p>
+
+<p>Emit is a Swift framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.</p>
+
+<p>Emit has been developed for use in the Hootsuite iOS app.</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>Emit provides a simple way to emit events and changes on a variable.</li>
+<li>Emit helps support the binding for the MVVM (Model, View-Model, View) architecture.</li>
+</ul>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 10.0+</li>
+<li>Xcode 9.0+</li>
+</ul>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='signal' class='heading'>Signal</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">loginCompleteSignal</span> <span class="o">=</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+<span class="c1">/// Handle signal</span>
+<span class="p">}</span>
+
+<span class="n">loginCompleteSignal</span><span class="o">.</span><span class="nf">emit</span><span class="p">()</span>
+</code></pre>
+
+<p>To create a signal you need to specify the return type that will passed when the closure is emitted. In the case above we are declaring the type to be <code>Bool</code>. If there is no need for a value you can return Void in that case you can initialize it as <code>Signal&lt;Void&gt;()</code>.</p>
+
+<p>To subscribe to a Signal you need to pass the Signal&rsquo;s owner for memory management purposes and the closure to be called when the Signal is emitted. You may also pass a <code>DispatchQueue</code> that you would like the closure to be called on, the default is <code>DispatchQueue.main</code>.</p>
+<h3 id='observablevariable' class='heading'>ObservableVariable</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="kt">ObservableVariable</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
+
+<span class="n">email</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">newEmail</span> <span class="k">in</span>
+<span class="c1">/// Update UI with new email</span>
+<span class="p">}</span>
+
+<span class="n">email</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"test_email@gmail.com"</span> <span class="c1">/// This will emit the signal to update the UI</span>
+</code></pre>
+
+<p>The usage for <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code> is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code>.</p>
+<h2 id='demo-projects' class='heading'>Demo Projects</h2>
+
+<p>See the demo project provided for example usage of the Emit framework.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Emit can be installed using either <a href="https://github.com/Carthage/Carthage">Carthage</a> or <a href="https://cocoapods.org/">CocoaPods</a>.</p>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>To integrate Emit into your Xcode project using Carthage, specify it in your Cartfile:</p>
+<pre class="highlight plaintext"><code>github "hootsuite/Emit"
+</code></pre>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>First, add the following line to your Podfile:</p>
+<pre class="highlight plaintext"><code>pod 'Emit'
+</code></pre>
+
+<p>Second, install Emit into your project:</p>
+<pre class="highlight plaintext"><code>pod install
+</code></pre>
+<h2 id='future-work' class='heading'>Future Work</h2>
+
+<p>We have been very pleased with what we have been able to achieve when using Emit but there is a few things we have on the wishlist for the future.</p>
+
+<ol>
+<li>Combining Signals and ObservableVariables so only one closure is called. Similar to RxSwift CombineLatest.</li>
+<li>Only firing ObservableVariable signal if their value has changed. Currently it fires on didSet even if it&rsquo;s set to the same value.</li>
+</ol>
+<h2 id='license' class='heading'>License</h2>
+
+<p>Emit is released under the Apache License, Version 2.0. See <a href="LICENSE.md">LICENSE.md</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>Copyright © 2018 Hootsuite. All rights reserved.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
