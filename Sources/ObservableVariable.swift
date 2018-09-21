@@ -1,4 +1,4 @@
-// Copyright © 2018 Hootsuite Media Inc. All rights reserved.
+// Copyright © 2018 Hootsuite Inc. All rights reserved.
 
 import Foundation
 

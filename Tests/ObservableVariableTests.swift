@@ -1,4 +1,4 @@
-// Copyright © 2018 Hootsuite Media Inc. All rights reserved.
+// Copyright © 2018 Hootsuite Media. All rights reserved.
 
 import Foundation
 import XCTest

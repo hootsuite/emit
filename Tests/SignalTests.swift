@@ -1,4 +1,4 @@
-// Copyright © 2017 Hootsuite Media Inc. All rights reserved.
+// Copyright © 2017 Hootsuite Media. All rights reserved.
 
 import XCTest
 @testable import Emit
