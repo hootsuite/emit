@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'tmpdir'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = 'Usage: docs -n NAME'
+
+  opts.on('-n', '--name NAME', 'The name of the repository') do |v|
+    options[:name] = v
+  end
+  opts.on('-s', '--scheme SCHEME', 'The scheme to use to build the module') do |v|
+    options[:scheme] = v
+  end
+end.parse!
+
+name = options[:name]
+
+# Create a temporary directory
+temp_dir = Dir.mktmpdir([name, 'docs'])
+at_exit { FileUtils.remove_entry(temp_dir) }
+
+# Checkout the gh-pages branch and run Jazzy
+git_url = `git remote get-url origin`.strip
+version = `git ls-remote --tags --quiet | awk -F'/' '/[0-9].[0-9].[0-9].*/ { print $3}' | sort -nr | head -n1`.strip
+puts "Generating docs for version #{version}"
+system "git clone --branch gh-pages #{git_url} #{temp_dir}"
+scheme = options[:scheme]
+if scheme.nil?
+  system "jazzy --output #{temp_dir} \
+                --github-file-prefix https://github.com/hootsuite/#{name}/blob/master"
+else
+  system "jazzy --output #{temp_dir} \
+                --github-file-prefix https://github.com/hootsuite/#{name}/blob/master \
+                --xcodebuild-arguments -scheme,#{scheme}"
+end
+
+# Commit the changes
+Dir.chdir(temp_dir) do
+  system('git add -A')
+  system("git commit -m \"Update documentation for #{version}\"")
+  system('git push')
+end
