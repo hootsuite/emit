@@ -7,8 +7,6 @@ bundle exec danger --danger_id=unit_tests
 
 if [[ $BUDDYBUILD_BRANCH == "master" ]]; then
   # Create documentation
-  aws s3 cp s3://hootsuite-build-artifacts/deploy/mobile/docs bin
-  chmod +x bin/docs
   bin/docs -n emit
 
   # Gather and report coverage stats
