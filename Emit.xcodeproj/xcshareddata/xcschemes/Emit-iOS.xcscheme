@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A8C8609A1DA5B1EF00F4B309"
-               BuildableName = "Emit.framework"
-               BlueprintName = "Emit"
+               BuildableName = "Emit-iOS.framework"
+               BlueprintName = "Emit-iOS"
                ReferencedContainer = "container:Emit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8C8609A1DA5B1EF00F4B309"
-            BuildableName = "Emit.framework"
-            BlueprintName = "Emit"
+            BuildableName = "Emit-iOS.framework"
+            BlueprintName = "Emit-iOS"
             ReferencedContainer = "container:Emit.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A8C860A31DA5B1EF00F4B309"
-               BuildableName = "EmitTests.xctest"
-               BlueprintName = "EmitTests"
+               BuildableName = "EmitTests-iOS.xctest"
+               BlueprintName = "EmitTests-iOS"
                ReferencedContainer = "container:Emit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -54,8 +54,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8C8609A1DA5B1EF00F4B309"
-            BuildableName = "Emit.framework"
-            BlueprintName = "Emit"
+            BuildableName = "Emit-iOS.framework"
+            BlueprintName = "Emit-iOS"
             ReferencedContainer = "container:Emit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8C8609A1DA5B1EF00F4B309"
-            BuildableName = "Emit.framework"
-            BlueprintName = "Emit"
+            BuildableName = "Emit-iOS.framework"
+            BlueprintName = "Emit-iOS"
             ReferencedContainer = "container:Emit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -94,8 +94,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A8C8609A1DA5B1EF00F4B309"
-            BuildableName = "Emit.framework"
-            BlueprintName = "Emit"
+            BuildableName = "Emit-iOS.framework"
+            BlueprintName = "Emit-iOS"
             ReferencedContainer = "container:Emit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
