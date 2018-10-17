@@ -2,8 +2,6 @@
 
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md)
 [![GitHub release](https://img.shields.io/github/release/carthage/carthage.svg)](https://github.com/Carthage/Carthage/releases)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/Alamofire.svg)](https://img.shields.io/cocoapods/v/Alamofire.svg)
 [![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green.svg)](https://hootsuite.github.io/emit/)
 
 
@@ -18,7 +16,7 @@ Emit has been developed for use in the Hootsuite iOS app.
 
 ## Requirements
 
-- iOS 10.0+
+- iOS 10.0+, macOS 10.12+, tvOS 10.0+
 - Xcode 9.0+
 
 ## Usage
@@ -27,7 +25,7 @@ Emit has been developed for use in the Hootsuite iOS app.
 ```swift
 let loginCompleteSignal = Signal<Bool>()
 signal.subscribe(owner: self) { result in
-/// Handle signal
+    // Handle signal
 }
 
 loginCompleteSignal.emit()
@@ -41,10 +39,10 @@ To subscribe to a Signal you need to pass the Signal's owner for memory manageme
 let email = ObservableVariable("")
 
 email.signal.subscribe(owner: self) { newEmail in
-/// Update UI with new email
+    // Update UI with new email
 }
 
-email.value = "test_email@gmail.com" /// This will emit the signal to update the UI
+email.value = "test_email@gmail.com" // This will emit the signal to update the UI
 ```
 
 The usage for `ObservableVariable` is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the `ObservableVariable`.

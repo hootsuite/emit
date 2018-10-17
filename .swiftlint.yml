@@ -61,11 +61,3 @@ type_name:
   max_length:
     warning: 60
     error: 100
-
-custom_rules:
-  extra_header_comments:
-    name: "File header comments"
-    regex: '(^\/\/ *$)|(^\/\/ *[A-Za-z]+\.swift$)|(^\/\/ *Created by \w*)'
-    match_kinds:
-      - comment
-    message: "Clean up file header comments."
