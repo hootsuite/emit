@@ -51,8 +51,6 @@
 
 <p><a href="https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202-lightgrey.svg" alt="GitHub license"></a>
 <a href="https://github.com/Carthage/Carthage/releases"><img src="https://img.shields.io/github/release/carthage/carthage.svg" alt="GitHub release"></a>
-<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage Compatible"></a>
-<a href="https://img.shields.io/cocoapods/v/Alamofire.svg"><img src="https://img.shields.io/cocoapods/v/Alamofire.svg" alt="Cocoapods Compatible"></a>
 <a href="https://hootsuite.github.io/emit/"><img src="https://img.shields.io/badge/Documentation-GitHub%20Pages-green.svg" alt="Documentation"></a></p>
 
 <p>Emit is a Swift framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.</p>
@@ -67,14 +65,14 @@
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>iOS 10.0+</li>
+<li>iOS 10.0+, macOS 10.12+, tvOS 10.0+</li>
 <li>Xcode 9.0+</li>
 </ul>
 <h2 id='usage' class='heading'>Usage</h2>
 <h3 id='signal' class='heading'>Signal</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">loginCompleteSignal</span> <span class="o">=</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-<span class="c1">/// Handle signal</span>
+    <span class="c1">// Handle signal</span>
 <span class="p">}</span>
 
 <span class="n">loginCompleteSignal</span><span class="o">.</span><span class="nf">emit</span><span class="p">()</span>
@@ -87,10 +85,10 @@
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="kt">ObservableVariable</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
 
 <span class="n">email</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">newEmail</span> <span class="k">in</span>
-<span class="c1">/// Update UI with new email</span>
+    <span class="c1">// Update UI with new email</span>
 <span class="p">}</span>
 
-<span class="n">email</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"test_email@gmail.com"</span> <span class="c1">/// This will emit the signal to update the UI</span>
+<span class="n">email</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"test_email@gmail.com"</span> <span class="c1">// This will emit the signal to update the UI</span>
 </code></pre>
 
 <p>The usage for <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code> is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code>.</p>
