@@ -5,14 +5,15 @@
 [![Documentation](https://img.shields.io/badge/Documentation-GitHub%20Pages-green.svg)](https://hootsuite.github.io/emit/)
 
 
-Emit is a Swift framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.
+Emit is a simple signals library for Swift. It lets you emit strongly-typed events and you don't have to worry about disposing of subscriptions. Emit supports emit/subscribe, map, and filter. Which makes it ideal for keeping your code simple.
 
 Emit has been developed for use in the Hootsuite iOS app.
 
 ## Features
 
-- Emit provides a simple way to emit events and changes on a variable.
-- Emit helps support the binding for the MVVM (Model, View-Model, View) architecture. 
+- Strongly-typed events
+- Mapping and filtering of signals
+- Observable variables
 
 ## Requirements
 
@@ -22,19 +23,34 @@ Emit has been developed for use in the Hootsuite iOS app.
 ## Usage
 
 ### Signal
+
+To create a signal you specify the event type that will passed to the subscription closure. You can also specify `Void` if you don't want to include an event.
+
 ```swift
+// Create a signal
 let loginCompleteSignal = Signal<Bool>()
-signal.subscribe(owner: self) { result in
+```
+
+To subscribe to a signal you pass an owner. The owner needs to be an object (an instance of a `class` as opposed to a `struct`). When the owner gets released the subscriptions stops automatically. You may also pass a `DispatchQueue` that you would like the closure to be called on, the default is `DispatchQueue.main`.
+
+```swift
+// Subscribe to it
+loginCompleteSignal.subscribe(owner: self) { result in
     // Handle signal
 }
-
-loginCompleteSignal.emit()
 ```
-To create a signal you need to specify the return type that will passed when the closure is emitted. In the case above we are declaring the type to be `Bool`. If there is no need for a value you can return Void in that case you can initialize it as `Signal<Void>()`.
 
-To subscribe to a Signal you need to pass the Signal's owner for memory management purposes and the closure to be called when the Signal is emitted. You may also pass a `DispatchQueue` that you would like the closure to be called on, the default is `DispatchQueue.main`.
+To emit a signal simply call `emit` with the event value. Note that subscribers will be called on the next run loop of their specified queue.
+
+```swift
+// Emit an event
+loginCompleteSignal.emit(true)
+```
 
 ### ObservableVariable
+
+Observable variables combine a value and a signal. The signal gets emitted every time the value changes.
+
 ```swift
 let email = ObservableVariable("")
 
@@ -45,9 +61,7 @@ email.signal.subscribe(owner: self) { newEmail in
 email.value = "test_email@gmail.com" // This will emit the signal to update the UI
 ```
 
-The usage for `ObservableVariable` is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the `ObservableVariable`.
-
-## Demo Projects
+## Demo Project
 
 See the demo project provided for example usage of the Emit framework.
 
@@ -79,12 +93,11 @@ pod install
 
 ## Future Work
 
-We have been very pleased with what we have been able to achieve when using Emit but there is a few things we have on the wishlist for the future.
+We have been very pleased with what we have been able to achieve when with Emit, but there are a few things we have on the wishlist:
 
-1. Combining Signals and ObservableVariables so only one closure is called. Similar to RxSwift CombineLatest.
-2. Only firing ObservableVariable signal if their value has changed. Currently it fires on didSet even if it's set to the same value.
+1. Combining signals in ObservableVariable so that only one closure is called. Similar to RxSwift CombineLatest.
+2. Only firing ObservableVariable signal if the value is actually different. Currently it fires on `didSet` even if the value is the same.
 
 ## License
 
 Emit is released under the Apache License, Version 2.0. See [LICENSE.md](LICENSE.md) for details.
-
