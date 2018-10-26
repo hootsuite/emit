@@ -53,14 +53,15 @@
 <a href="https://github.com/Carthage/Carthage/releases"><img src="https://img.shields.io/github/release/carthage/carthage.svg" alt="GitHub release"></a>
 <a href="https://hootsuite.github.io/emit/"><img src="https://img.shields.io/badge/Documentation-GitHub%20Pages-green.svg" alt="Documentation"></a></p>
 
-<p>Emit is a Swift framework to support reactive binding in your iOS apps. Emit is very simple and type safe option to use reactive programming paradigms in your apps.</p>
+<p>Emit is a simple signals library for Swift. It lets you emit strongly-typed events and you don&rsquo;t have to worry about disposing of subscriptions. Emit supports emit/subscribe, map, and filter. Which makes it ideal for keeping your code simple.</p>
 
 <p>Emit has been developed for use in the Hootsuite iOS app.</p>
 <h2 id='features' class='heading'>Features</h2>
 
 <ul>
-<li>Emit provides a simple way to emit events and changes on a variable.</li>
-<li>Emit helps support the binding for the MVVM (Model, View-Model, View) architecture.</li>
+<li>Strongly-typed events</li>
+<li>Mapping and filtering of signals</li>
+<li>Observable variables</li>
 </ul>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
@@ -70,18 +71,26 @@
 </ul>
 <h2 id='usage' class='heading'>Usage</h2>
 <h3 id='signal' class='heading'>Signal</h3>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">loginCompleteSignal</span> <span class="o">=</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="c1">// Handle signal</span>
-<span class="p">}</span>
 
-<span class="n">loginCompleteSignal</span><span class="o">.</span><span class="nf">emit</span><span class="p">()</span>
+<p>To create a signal you specify the event type that will passed to the subscription closure. You can also specify <code>Void</code> if you don&rsquo;t want to include an event.</p>
+<pre class="highlight swift"><code><span class="c1">// Create a signal</span>
+<span class="k">let</span> <span class="nv">loginCompleteSignal</span> <span class="o">=</span> <span class="kt">Signal</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">()</span>
 </code></pre>
 
-<p>To create a signal you need to specify the return type that will passed when the closure is emitted. In the case above we are declaring the type to be <code>Bool</code>. If there is no need for a value you can return Void in that case you can initialize it as <code>Signal&lt;Void&gt;()</code>.</p>
+<p>To subscribe to a signal you pass an owner. The owner needs to be an object (an instance of a <code>class</code> as opposed to a <code>struct</code>). When the owner gets released the subscriptions stops automatically. You may also pass a <code>DispatchQueue</code> that you would like the closure to be called on, the default is <code>DispatchQueue.main</code>.</p>
+<pre class="highlight swift"><code><span class="c1">// Subscribe to it</span>
+<span class="n">loginCompleteSignal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="c1">// Handle signal</span>
+<span class="p">}</span>
+</code></pre>
 
-<p>To subscribe to a Signal you need to pass the Signal&rsquo;s owner for memory management purposes and the closure to be called when the Signal is emitted. You may also pass a <code>DispatchQueue</code> that you would like the closure to be called on, the default is <code>DispatchQueue.main</code>.</p>
+<p>To emit a signal simply call <code>emit</code> with the event value. Note that subscribers will be called on the next run loop of their specified queue.</p>
+<pre class="highlight swift"><code><span class="c1">// Emit an event</span>
+<span class="n">loginCompleteSignal</span><span class="o">.</span><span class="nf">emit</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre>
 <h3 id='observablevariable' class='heading'>ObservableVariable</h3>
+
+<p>Observable variables combine a value and a signal. The signal gets emitted every time the value changes.</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">email</span> <span class="o">=</span> <span class="kt">ObservableVariable</span><span class="p">(</span><span class="s">""</span><span class="p">)</span>
 
 <span class="n">email</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">owner</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">newEmail</span> <span class="k">in</span>
@@ -90,9 +99,7 @@
 
 <span class="n">email</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s">"test_email@gmail.com"</span> <span class="c1">// This will emit the signal to update the UI</span>
 </code></pre>
-
-<p>The usage for <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code> is very similar to a Signal except instead of emitting the signal yourself the signal will be emitted when the value is set or changed on the <code><a href="Classes/ObservableVariable.html">ObservableVariable</a></code>.</p>
-<h2 id='demo-projects' class='heading'>Demo Projects</h2>
+<h2 id='demo-project' class='heading'>Demo Project</h2>
 
 <p>See the demo project provided for example usage of the Emit framework.</p>
 <h2 id='installation' class='heading'>Installation</h2>
@@ -114,11 +121,11 @@
 </code></pre>
 <h2 id='future-work' class='heading'>Future Work</h2>
 
-<p>We have been very pleased with what we have been able to achieve when using Emit but there is a few things we have on the wishlist for the future.</p>
+<p>We have been very pleased with what we have been able to achieve when with Emit, but there are a few things we have on the wishlist:</p>
 
 <ol>
-<li>Combining Signals and ObservableVariables so only one closure is called. Similar to RxSwift CombineLatest.</li>
-<li>Only firing ObservableVariable signal if their value has changed. Currently it fires on didSet even if it&rsquo;s set to the same value.</li>
+<li>Combining signals in ObservableVariable so that only one closure is called. Similar to RxSwift CombineLatest.</li>
+<li>Only firing ObservableVariable signal if the value is actually different. Currently it fires on <code>didSet</code> even if the value is the same.</li>
 </ol>
 <h2 id='license' class='heading'>License</h2>
 
