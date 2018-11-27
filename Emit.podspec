@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = 'Emit'
   s.version      = '1.0.0'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.macos.deployment_target = '10.12'
   s.tvos.deployment_target = '10.0'
 
