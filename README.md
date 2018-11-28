@@ -17,8 +17,8 @@ Emit has been developed for use in the Hootsuite iOS app.
 
 ## Requirements
 
-- iOS 10.0+, macOS 10.12+, tvOS 10.0+
-- Xcode 9.0+
+- iOS 11.0+, macOS 10.12+, tvOS 10.0+
+- Xcode 10.1+
 
 ## Usage
 
