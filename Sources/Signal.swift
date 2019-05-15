@@ -47,7 +47,7 @@ public final class Signal<Event> {
 
     private func removeAll(_ subscriptionsToRemove: [OwnedSubscription<Event>]) {
         for subscription in subscriptionsToRemove {
-            if let index = subscriptions.index(where: { $0 === subscription }) {
+            if let index = subscriptions.firstIndex(where: { $0 === subscription }) {
                 subscriptions.remove(at: index)
             }
         }
