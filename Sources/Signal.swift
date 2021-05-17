@@ -119,7 +119,7 @@ public final class Signal<Event> {
     }
 }
 
-private protocol Subscription: class {
+private protocol Subscription: AnyObject {
     associatedtype Event
 
     /// `DispatchQueue` in which to dispatch events.
