@@ -1,3 +1,4 @@
+
 # Emit
 
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-lightgrey.svg)](https://raw.githubusercontent.com/Carthage/Carthage/master/LICENSE.md)
@@ -8,6 +9,22 @@
 Emit is a simple signals library for Swift. It lets you emit strongly-typed events and you don't have to worry about disposing of subscriptions. Emit supports emit/subscribe, map, and filter. Which makes it ideal for keeping your code simple.
 
 Emit has been developed for use in the Hootsuite iOS app.
+
+## Deprecation Notice ⚠️
+
+**Attention: Users of Emit**
+
+We would like to inform you that Emit library has been deprecated and will no longer be maintained as of September 1, 2024. This decision was made after careful consideration due to availability of better alternatives, i.e. Combine
+
+### What This Means for You
+
+- **No New Features**: There will be no further development of new features for Emit.
+- **Migration Recommendations**: We recommend users to migrate to Combine which has similar functionality and will be supported by Apple.
+
+### Timeline
+
+- **July 22, 2024**: Official deprecation announced.
+- **September 1, 2024**: End of support and maintenance.
 
 ## Features
 
@@ -90,13 +107,6 @@ Second, install Emit into your project:
 ```
 pod install
 ```
-
-## Future Work
-
-We have been very pleased with what we have been able to achieve when with Emit, but there are a few things we have on the wishlist:
-
-1. Combining signals in ObservableVariable so that only one closure is called. Similar to RxSwift CombineLatest.
-2. Only firing ObservableVariable signal if the value is actually different. Currently it fires on `didSet` even if the value is the same.
 
 ## License
 
